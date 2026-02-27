@@ -1,4 +1,4 @@
-# Docker Essentials Lab - ITI System Admin Track
+# Docker Essentials Lab 1 - ITI System Admin
 
 This repository contains the solution for the Docker Lab assignment. The tasks cover Docker installation, container management, resource limiting (Cgroups), and demonstrating the OOM (Out Of Memory) Killer mechanism.
 
@@ -41,8 +41,8 @@ Ran the Nginx container in detached mode (`-d`) and assigned the specific name `
 
 docker run -d --name Omar-ITI-46 nginx:alpine
 
-⚙️ Task 3: Manual Resource Control (Cgroups v2)Instead of using Docker commands, 
-I navigated directly to the Cgroup v2 filesystem to inspect and manually enforce resource limits at the kernel level.
+## ⚙️ Task 3: Manual Resource Control (Cgroups v2)Instead of using Docker commands, 
+###I navigated directly to the Cgroup v2 filesystem to inspect and manually enforce resource limits at the kernel level.
 1. Locating the Cgroup PathIdentified the container's scope directory within /sys/fs/cgroup/system.slice/.
 2. Applying Limits ManuallyI manually wrote the limit values into the controller files:
 
@@ -51,7 +51,7 @@ I navigated directly to the Cgroup v2 filesystem to inspect and manually enforce
 Memory Limit (70MB): Calculated as $70 \times 1024 \times 1024 = 73400320$ Bytes --> echo 73400320 > memory.max
 CPU Limit (1 Core): Set the Quota equal to the Period (100000 microseconds) --> echo "100000 100000" > cpu.max
 
-💀 Task 4: Bonus - The OOM Killer
+## 💀 Task 4: Bonus - The OOM Killer
 In this task, I demonstrated how the Linux Kernel handles a container that exceeds its allowed memory usage (Out Of Memory).
 
 Scenario:
