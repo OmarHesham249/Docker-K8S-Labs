@@ -13,17 +13,15 @@ This repository contains the solution for the Docker Lab assignment. The tasks c
 ### 1. Uninstalling Old Versions
 Before installing Docker, I ensured a clean environment by removing any conflicting packages or old versions of Docker/Podman.
 
-![Uninstall Old Versions](screenshots/image_44231d.png)
-
 ### 2. Installing Docker Engine
 Successfully installed `docker-ce`, `docker-ce-cli`, and `containerd.io`.
 
-![Installing Docker](screenshots/Installing%20Docker.jpg)
+![Installing Docker](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab1/Screenshots/Installing%20Docker.png)
 
 ### 3. Starting & Testing Docker
 Started the Docker service and verified the installation by running the `hello-world` container.
 
-![Hello World Test](screenshots/Starting%20and%20Testing%20Docker%20with%20hello-world.jpg)
+![Hello World Test](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab1/Screenshots/Starting%20and%20Testing%20Docker%20with%20hello-world.png)
 
 ---
 
@@ -32,29 +30,26 @@ Started the Docker service and verified the installation by running the `hello-w
 ### 1. Pulling the Image
 Pulled the `nginx:alpine` image from Docker Hub.
 
-![Pull Nginx](screenshots/Pulling%20Nginx%20Image.jpg)
+![Pull Nginx](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab1/Screenshots/Pulling%20Nginx%20Image.png)
+
+Then I checked for the Mmemory value that's having the default value which is MAX.
+
+![Path of Container and memory value](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab1/Screenshots/Path%20of%20container%20cgroup%20and%20it's%20memory%20value.png)
 
 ### 2. Running Nginx in Background
 Ran the Nginx container in detached mode (`-d`) and assigned the specific name `Omar-ITI-46` as required.
 
-```bash
 docker run -d --name Omar-ITI-46 nginx:alpine
-⚙️ Task 3: Resource Limits (Cgroups)
-1. Limiting Memory & CPU
-Created a container with strict resource limits:
 
-Memory: 70MB
+⚙️ Task 3: Manual Resource Control (Cgroups v2)Instead of using Docker commands, 
+I navigated directly to the Cgroup v2 filesystem to inspect and manually enforce resource limits at the kernel level.
+1. Locating the Cgroup PathIdentified the container's scope directory within /sys/fs/cgroup/system.slice/.
+2. Applying Limits ManuallyI manually wrote the limit values into the controller files:
 
-CPU: 1 Core
-
-Bash
-docker update --memory 70m --cpus 1.0 Omar-ITI-46
-2. Verifying Cgroup Values
-Navigated to the Cgroup v2 path to verify the configuration at the kernel level.
-
-Memory Limit in Bytes: 73400320 (which equals 70MB).
-
-CPU Quota: 100000 (100% of a period, equating to 1 Core).
+![Limiting](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab1/Screenshots/Limiting%20the%20memory%20to%2070M%20and%201%20core%20CPU.png)
+   
+Memory Limit (70MB): Calculated as $70 \times 1024 \times 1024 = 73400320$ Bytes --> echo 73400320 > memory.max
+CPU Limit (1 Core): Set the Quota equal to the Period (100000 microseconds) --> echo "100000 100000" > cpu.max
 
 💀 Task 4: Bonus - The OOM Killer
 In this task, I demonstrated how the Linux Kernel handles a container that exceeds its allowed memory usage (Out Of Memory).
@@ -62,12 +57,14 @@ In this task, I demonstrated how the Linux Kernel handles a container that excee
 Scenario:
 Created a container named memory-eater.
 
-Set a hard limit of 50MB RAM and disabled Swap (--memory-swap 50m).
+Set a hard limit of 70MB RAM and disabled Swap (--memory-swap 70m).
 
-Executed a command to consume more than 50MB of RAM immediately.
+Executed a command to consume more than 70MB of RAM immediately.
 
 Result:
 The container was immediately killed by the system.
+
+![OOM](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab1/Screenshots/Flooding%20the%20memory%20and%20OOM%20Killer.png)
 
 Status: Exited (137)
 
