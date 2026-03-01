@@ -67,6 +67,10 @@ docker run -d --name webserver-iti \
   -p 8080:8080 \
   -v $(pwd)/index.html:/usr/share/nginx/html/index.html:ro \
   nginx:alpine
+
+In ~/Desktop/Data :
+  echo "<h1>Lab 2 ITI - Omar Hesham</h1>" > index.html
+  
 ### 4. Verification
 ![Verify](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Adding%20content%20using%20volume%20mounting.png)
 Verifying the setup by accessing the web server.
