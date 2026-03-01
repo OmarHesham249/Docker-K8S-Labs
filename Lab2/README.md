@@ -75,4 +75,5 @@ In ~/Desktop/Data :
   ```
 ### 4. Verification
 ![Verify](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Adding%20content%20using%20volume%20mounting.png)
+
 Verifying the setup by accessing the web server.
