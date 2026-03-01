@@ -53,25 +53,26 @@ Use Volume Mounting to serve a custom index.html page.
 Created a bridge network with the specific subnet.
 
 ![Creating network](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Creating%20iti%20network.png)
-
+```bash
 docker network create --driver bridge --subnet 10.0.0.0/8 iti-network
+```
 ### 2. Custom Index Page (Volume Mounting)
 I prepared an index.html file containing the required text: <h1>Lab 2 ITI - Omar Hesham</h1>. This file is mounted to the container to replace the default Nginx page.
 
 ### 3. Running the Nginx Container
 Executed the container on the iti-network, mapping port 8080 to 8080, and handling the read-only volume mount (using :Z for SELinux context).
 ![Running Cont](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Creating%20the%20container%20for%20task%202.png)
-
+```bash
 docker run -d --name webserver-iti \
   --network iti-network \
   -p 8080:8080 \
   -v $(pwd)/index.html:/usr/share/nginx/html/index.html:ro \
   nginx:alpine
-
+```
 In ~/Desktop/Data :
- '''bash
+ ```bash
   echo "<h1>Lab 2 ITI - Omar Hesham</h1>" > index.html
-  '''
+  ```
 ### 4. Verification
 ![Verify](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Adding%20content%20using%20volume%20mounting.png)
 Verifying the setup by accessing the web server.
