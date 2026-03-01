@@ -15,11 +15,11 @@ This repository contains the solution for Lab 2 of the Docker course at the Info
 ### 1. The Dockerfile
 I created a Dockerfile to containerize the basic flask application.
 
-![Dockerfile Screenshot]([./Docker%20file.png](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Docker%20file.png))
+![Dockerfile Screenshot](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Docker%20file.png)
 ### 2. Building the Image
 Building the image locally using `docker build`.
 
-![Building Image]([./Testing%20building%20Image%20locally.png](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Testing%20building%20Image%20locally.png))
+![Building Image](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Testing%20building%20Image%20locally.png)
 
 ### 3. Running the Container & Port Mapping
 Running the container with the required memory limit and port mapping (`-m 100m -p 80:5000`).
