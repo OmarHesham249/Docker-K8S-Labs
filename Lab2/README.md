@@ -39,7 +39,7 @@ https://hub.docker.com/repository/docker/omarhesham249/omar-flask-img/
 
 ---
 
-##🌐 Part 2: Nginx Web Server & Networking
+## 🌐 Part 2: Nginx Web Server & Networking
 Objective
 Create a custom bridge network named iti-network with subnet 10.0.0.0/8.
 
