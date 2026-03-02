@@ -68,7 +68,7 @@ docker run -v $(pwd)/Data:/usr/share/nginx/html
 ```
 
 4. Running the Nginx Container
-Executed the container on the iti-network, mapping port 8080 to 8080, and handling the read-only volume mount (using :Z for SELinux context).
+Executed the container on the iti-network, mapping port 8081 to 80, and handling the read-only volume mount.
 
 ![Run container](https://github.com/OmarHesham249/Docker-K8S-Labs/blob/main/Lab2/Screenshots/Creating%20the%20container%20for%20task%202.png)
 
@@ -76,7 +76,7 @@ Executed the container on the iti-network, mapping port 8080 to 8080, and handli
 docker run -d --name webserver-iti \
   --network iti-network \
   -p 8080:8080 \
-  -v $(pwd)/index.html:/usr/share/nginx/html/index.html:ro,Z \
+  -v $(pwd)/index.html:/usr/share/nginx/html/index.html:ro \
   nginx:alpine
 ```
 4. Verification
