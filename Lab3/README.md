@@ -1,4 +1,4 @@
-# Docker Lab 3: Private Registry, WordPress, and Reverse Proxy (Nginx)
+# 🐳 Docker Lab 3: Private Registry, WordPress, and Reverse Proxy (Nginx)
 
 This project shows how to use Docker and Docker Compose. We will make a local registry, run a WordPress site, and use Nginx to route traffic to a Flask app.
 
